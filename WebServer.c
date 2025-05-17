@@ -188,7 +188,11 @@ int main()
 
             // Quando o botão for pressionado, toca o alarme
             printf("Botão precionado, tocando alarme!\n");
-            alarm_active = true; // Ativa o alarme
+
+            if (alarm_verification)
+            {
+                alarm_active = true; // Ativa o alarme
+            }
         }
 
         while (alarm_active) // Enquanto o alarme estiver ativo
@@ -276,7 +280,7 @@ void start_alarm() // Função para iniciar o alarme
     if (alarm_active)
         return;
 
-    alarm_verification = true; // Ativa a verificação do alarme
+    alarm_verification = true;  // Ativa a verificação do alarme
     gpio_put(LED_BLUE_PIN, 0);  // Desliga o LED azul
     gpio_put(LED_RED_PIN, 0);   // Desliga o LED vermelho
     gpio_put(LED_GREEN_PIN, 1); // Liga o LED verde
